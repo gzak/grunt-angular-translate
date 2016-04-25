@@ -1,6 +1,6 @@
 {
   "name": "grunt-angular-translate-token-extractor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extract text directly from templates and generate translator-friendly json files",
   "main": "tasks/grunt-extract-tokens.js",
   "repository": {
