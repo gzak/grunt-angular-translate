@@ -1,7 +1,7 @@
 {
-  "name": "grunt-angular-translate",
+  "name": "grunt-angular-translate-token-extractor",
   "version": "1.0.0",
-  "description": "Provides tasks to extract tokens from angularjs templates which use the angular-translate directive. One task generates token files for translators, another converts these files into a format that's compatible with angular-translate.",
+  "description": "Extract text directly from templates and generate translator-friendly json files",
   "main": "tasks/grunt-extract-tokens.js",
   "repository": {
     "type": "git",
