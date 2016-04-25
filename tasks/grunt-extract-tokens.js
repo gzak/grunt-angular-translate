@@ -65,42 +65,14 @@
       });
     });
     return res;
-  }
-
-  // Constant of types of files that can be generated
-  var generatedFileOptions = {
-      JSON: 0,
-      angularConstant: 1
-  }
-
-  // Configuration options for generating angular constant files
-  var angularConstantConfig = {
-      filePath: "app/localizations/dist/constants/",
-      localePrefix: "TRANSLATIONS_",
-      angularAppName: "myScApp"
-  };
-
-  // Set option to generate json or angular constant file
-  var generatedFileType = generatedFileOptions.angularConstant;
- 
+  } 
    grunt.registerMultiTask('convert-tokens', function () {
     this.files.forEach(function (f) {
         f.src.forEach(function (s) {
-            var contentsJSON = JSON.stringify(convert(grunt.file.readJSON(s)), null, 2);
-            if (generatedFileType === generatedFileOptions.JSON) {
-                grunt.file.write(f.dest,contentsJSON);
-            }
-            else if (generatedFileType === generatedFileOptions.angularConstant) {
-                var locale = f.dest.replace(".tmp/", "").replace(".json", "");
-                grunt.file.write(angularConstantConfig.filePath + locale + ".js",
-                    "(function () {'use strict'; angular.module('" + angularConstantConfig.angularAppName +
-                    "').constant(\"" + angularConstantConfig.localePrefix + locale.toUpperCase() + "\", " +
-                    contentsJSON + ");})();");
-            }
+            grunt.file.write(f.dest,JSON.stringify(convert(grunt.file.readJSON(s)), null, 2));
         });
     });
   });
-
 
   grunt.registerMultiTask('extract-tokens', function () {
     var done = this.async();
